@@ -223,7 +223,8 @@ p1 <- ggplot(weibl, aes(ziel_schaetzung_hdtsek, rel_abweichung)) +
   xlab("zu schätzende Zeit (in Hundertstelsekunden)") +
   ylab("relative Abweichung") +
   ggtitle("rel. Abweichungen der Schätzungen (Frauen)") +
-  ylim(-0.3, 0.4)
+  ylim(-0.3, 0.45) +
+  geom_point()
 
 p2 <- ggplot(maennl, aes(ziel_schaetzung_hdtsek, rel_abweichung)) +
   geom_boxplot(aes(group = ziel_schaetzung), 
@@ -233,10 +234,10 @@ p2 <- ggplot(maennl, aes(ziel_schaetzung_hdtsek, rel_abweichung)) +
   xlab("zu schätzende Zeit (in Hundertstelsekunden)") +
   ylab("relative Abweichung") +
   ggtitle("rel. Abweichungen der Schätzungen (Männer)") +
-  ylim(-0.3, 0.4)
+  ylim(-0.3, 0.45) +
+  geom_point()
 
 p1 + p2
-
 
 
 
@@ -266,3 +267,28 @@ t.test(maennl$rel_abweichung_abs, alternative = "greater",
 #   mean of x 
 # 0.1297667
 
+
+# Boxplot der betragsm. rel. Abweichungen stratifiziert nach Geschlecht
+plot_1 <- ggplot(weibl, aes(ziel_schaetzung_hdtsek, rel_abweichung_abs)) +
+  geom_boxplot(aes(group = ziel_schaetzung), 
+               fill = c("darkolivegreen3", "cadetblue2", "lightcoral")) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  theme_bw() +
+  xlab("zu schätzende Zeit (in Hundertstelsekunden)") +
+  ylab("betragsmäßige relative Abweichung") +
+  ggtitle("betragsmäßige rel. Abweichungen der Schätzungen (Frauen)") +
+  ylim(-0.01, 0.45) +
+  geom_point()
+
+plot_2 <- ggplot(maennl, aes(ziel_schaetzung_hdtsek, rel_abweichung_abs)) +
+  geom_boxplot(aes(group = ziel_schaetzung), 
+               fill = c("darkolivegreen3", "cadetblue2", "lightcoral")) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  theme_bw() +
+  xlab("zu schätzende Zeit (in Hundertstelsekunden)") +
+  ylab("betragsmäßige relative Abweichung") +
+  ggtitle("betragsmäßige rel. Abweichungen der Schätzungen (Männer)") +
+  ylim(-0.01, 0.45) +
+  geom_point()
+
+plot_1 + plot_2
