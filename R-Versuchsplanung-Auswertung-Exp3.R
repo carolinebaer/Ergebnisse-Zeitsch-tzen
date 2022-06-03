@@ -28,7 +28,7 @@ zeit100 <- subset(zeiten, zeiten$ziel_schaetzung == "100 sek")
 
 boxplot(zeit20$rel_abweichung, zeit60$rel_abweichung, zeit100$rel_abweichung, 
         col = c("darkolivegreen3", "cadetblue2", "lightcoral"),
-        main = "rel. Abweichung der Sch?tzung nach Zeitintervall", 
+        main = "rel. Abweichung der Schätzung nach Zeitintervall", 
         names = c("20 sek", "60 sek", "100 sek"),
         xlab = "Zeitintervall",
         ylab = "relative Abweichung")
@@ -69,7 +69,7 @@ summary(lin_modell)
 #   Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 # 
 # Residual standard error: 0.1139 on 20 degrees of freedom
-# (1 Beobachtung als fehlend gel?scht)
+# (1 Beobachtung als fehlend geloescht)
 # Multiple R-squared:  0.1123,	Adjusted R-squared:  0.0235 
 # F-statistic: 1.265 on 2 and 20 DF,  p-value: 0.304
 
@@ -94,7 +94,7 @@ summary(lin_modell_sek)
 #   Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 # 
 # Residual standard error: 0.1139 on 20 degrees of freedom
-# (1 Beobachtung als fehlend gel?scht)
+# (1 Beobachtung als fehlend geloescht)
 # Multiple R-squared:  0.1123,	Adjusted R-squared:  0.0235 
 # F-statistic: 1.265 on 2 and 20 DF,  p-value: 0.304
 
@@ -152,37 +152,39 @@ plot(werte$rel_abweichung_abs)
 ggplot(werte, aes(ziel_schaetzung_hdtsek, rel_abweichung_abs))+
   geom_point() +
   theme_bw() +
-  xlab("zu sch?tzende Zeit (in Hundertstelsekunden)") +
+  xlab("zu schätzende Zeit (in Hundertstelsekunden)") +
   ylab("Betrag der relativen Abweichung") +
-  ggtitle("betragsm??igen rel. Abweichungen der Sch?tzungen")
+  ggtitle("betragsmäßigen rel. Abweichungen der Schätzungen")
 
 # Plot der betragsmaessigen Abweichung in Sekunden:
 ggplot(werte, aes(ziel_schaetzung_hdtsek/100, rel_abweichung_abs))+
   geom_point() +
   theme_bw() +
-  xlab("zu sch?tzende Zeit (in Sekunden)") +
+  xlab("zu schätzende Zeit (in Sekunden)") +
   ylab("Betrag der relativen Abweichung") +
-  ggtitle("betragsm??igen rel. Abweichungen der Sch?tzungen")
+  ggtitle("betragsmäßigen rel. Abweichungen der Schätzungen")
 
 # Plot der Abweichung in Hundertstelsekunden:
 ggplot(werte, aes(ziel_schaetzung_hdtsek, rel_abweichung))+
   geom_point() +
   geom_hline(yintercept = 0, linetype = "dashed") +
   theme_bw() +
-  xlab("zu sch?tzende Zeit (in Hundertstelsekunden)") +
+  xlab("zu schätzende Zeit (in Hundertstelsekunden)") +
   ylab("relative Abweichung") +
-  ggtitle("rel. Abweichungen der Sch?tzungen")
+  ggtitle("rel. Abweichungen der Schätzungen")
 
 # Plot der Abweichung in Sekunden:
 ggplot(werte, aes(ziel_schaetzung_hdtsek/100, rel_abweichung))+
   geom_point() +
   geom_hline(yintercept = 0, linetype = "dashed") +
   theme_bw() +
-  xlab("zu sch?tzende Zeit (in Sekunden)") +
+  xlab("zu schätzende Zeit (in Sekunden)") +
   ylab("relative Abweichung") +
-  ggtitle("rel. Abweichungen der Sch?tzungen")
+  ggtitle("rel. Abweichungen der Schätzungen")
 
 
+
+#  Auswertung nach Geschlecht ##################################################
 
 # Unterdatensaetze fuer die Untersuchung nach einem Geschlechstspezifischem 
 # Unterschied in den Schaetzungen:
@@ -195,9 +197,9 @@ plot1 <- ggplot(weibl, aes(ziel_schaetzung_hdtsek, rel_abweichung_abs)) +
   geom_point() +
   geom_hline(yintercept = 0, linetype = "dashed") +
   theme_bw() +
-  xlab("zu sch?tzende Zeit (in Hundertstelsekunden)") +
-  ylab("betragsm??ige relative Abweichung") +
-  ggtitle("rel. Abweichungen der Sch?tzungen (Frauen)") +
+  xlab("zu schätzende Zeit (in Hundertstelsekunden)") +
+  ylab("betragsmäßige relative Abweichung") +
+  ggtitle("rel. Abweichungen der Schätzungen (Frauen)") +
   geom_smooth(method = "lm") +
   ylim(-0.1, 0.5)
 
@@ -205,9 +207,9 @@ plot2 <- ggplot(maennl, aes(ziel_schaetzung_hdtsek, rel_abweichung_abs)) +
   geom_point() +
   geom_hline(yintercept = 0, linetype = "dashed") +
   theme_bw() +
-  xlab("zu sch?tzende Zeit (in Hundertstelsekunden)") +
-  ylab("betragsm??ige relative Abweichung") +
-  ggtitle("rel. Abweichungen der Sch?tzungen (M?nner)") +
+  xlab("zu schätzende Zeit (in Hundertstelsekunden)") +
+  ylab("betragsmäßige relative Abweichung") +
+  ggtitle("rel. Abweichungen der Schätzungen (Männer)") +
   geom_smooth(method = "lm") +
   ylim(-0.1, 0.5)
 
@@ -220,9 +222,9 @@ p1 <- ggplot(weibl, aes(ziel_schaetzung_hdtsek, rel_abweichung)) +
                fill = c("darkolivegreen3", "cadetblue2", "lightcoral")) +
   geom_hline(yintercept = 0, linetype = "dashed") +
   theme_bw() +
-  xlab("zu sch?tzende Zeit (in Hundertstelsekunden)") +
+  xlab("zu schätzende Zeit (in Hundertstelsekunden)") +
   ylab("relative Abweichung") +
-  ggtitle("rel. Abweichungen der Sch?tzungen (Frauen)") +
+  ggtitle("rel. Abweichungen der Schätzungen (Frauen)") +
   ylim(-0.3, 0.45) +
   geom_point()
 
@@ -231,9 +233,9 @@ p2 <- ggplot(maennl, aes(ziel_schaetzung_hdtsek, rel_abweichung)) +
                fill = c("darkolivegreen3", "cadetblue2", "lightcoral")) +
   geom_hline(yintercept = 0, linetype = "dashed") +
   theme_bw() +
-  xlab("zu sch?tzende Zeit (in Hundertstelsekunden)") +
+  xlab("zu schätzende Zeit (in Hundertstelsekunden)") +
   ylab("relative Abweichung") +
-  ggtitle("rel. Abweichungen der Sch?tzungen (M?nner)") +
+  ggtitle("rel. Abweichungen der Schätzungen (Männer)") +
   ylim(-0.3, 0.45) +
   geom_point()
 
@@ -274,9 +276,9 @@ plot_1 <- ggplot(weibl, aes(ziel_schaetzung_hdtsek, rel_abweichung_abs)) +
                fill = c("darkolivegreen3", "cadetblue2", "lightcoral")) +
   geom_hline(yintercept = 0, linetype = "dashed") +
   theme_bw() +
-  xlab("zu sch?tzende Zeit (in Hundertstelsekunden)") +
-  ylab("betragsm??ige relative Abweichung") +
-  ggtitle("betragsm??ige rel. Abweichungen der Sch?tzungen (Frauen)") +
+  xlab("zu schätzende Zeit (in Hundertstelsekunden)") +
+  ylab("betragsmäßige relative Abweichung") +
+  ggtitle("betragsmäßige rel. Abweichungen der Schätzungen (Frauen)") +
   ylim(-0.01, 0.45) +
   geom_point()
 
@@ -285,9 +287,9 @@ plot_2 <- ggplot(maennl, aes(ziel_schaetzung_hdtsek, rel_abweichung_abs)) +
                fill = c("darkolivegreen3", "cadetblue2", "lightcoral")) +
   geom_hline(yintercept = 0, linetype = "dashed") +
   theme_bw() +
-  xlab("zu sch?tzende Zeit (in Hundertstelsekunden)") +
-  ylab("betragsm??ige relative Abweichung") +
-  ggtitle("betragsm??ige rel. Abweichungen der Sch?tzungen (M?nner)") +
+  xlab("zu schätzende Zeit (in Hundertstelsekunden)") +
+  ylab("betragsmäßige relative Abweichung") +
+  ggtitle("betragsmäßige rel. Abweichungen der Schätzungen (Männer)") +
   ylim(-0.01, 0.45) +
   geom_point()
 
@@ -300,9 +302,9 @@ ggplot(werte, aes(ziel_schaetzung_hdtsek, rel_abweichung)) +
                alpha = 0.6) +
   geom_hline(yintercept = 0, linetype = "dashed") +
   theme_bw() +
-  xlab("zu sch�tzende Zeit (in Hundertstelsekunden)") +
+  xlab("zu schätzende Zeit (in Hundertstelsekunden)") +
   ylab("relative Abweichung") +
-  ggtitle("relative Abweichungen der Sch�tzungen") +
+  ggtitle("relative Abweichungen der Schätzungen") +
   geom_point(pch = 16, size = 3)
 
 # Grafik-2 fuer Praesentation:
@@ -312,9 +314,9 @@ ggplot(werte, aes(ziel_schaetzung_hdtsek, rel_abweichung_abs)) +
                alpha = 0.6) +
   geom_hline(yintercept = 0, linetype = "dashed") +
   theme_bw() +
-  xlab("zu sch�tzende Zeit (in Hundertstelsekunden)") +
-  ylab("betragsm��ige relative Abweichung") +
-  ggtitle("betragsm��ige relative Abweichungen der Sch�tzungen") +
+  xlab("zu schätzende Zeit (in Hundertstelsekunden)") +
+  ylab("betragsmäßige relative Abweichung") +
+  ggtitle("betragsmäßige relative Abweichungen der Schätzungen") +
   geom_point(pch = 16, size = 3)
 
 # Grafik-3 fuer Praesentation:
@@ -324,9 +326,9 @@ w <- ggplot(weibl, aes(ziel_schaetzung_hdtsek, rel_abweichung)) +
                alpha = 0.6) +
   geom_hline(yintercept = 0, linetype = "dashed") +
   theme_bw() +
-  xlab("zu sch�tzende Zeit (in Hundertstelsekunden)") +
+  xlab("zu schätzende Zeit (in Hundertstelsekunden)") +
   ylab("relative Abweichung") +
-  ggtitle("relative Abweichungen der Sch�tzungen (Frauen)") +
+  ggtitle("relative Abweichungen der Schätzungen (Frauen)") +
   ylim(-0.3, 0.45) +
   geom_point(pch = 16, size = 3)
 
@@ -336,9 +338,9 @@ m <- ggplot(maennl, aes(ziel_schaetzung_hdtsek, rel_abweichung)) +
                alpha = 0.6) +
   geom_hline(yintercept = 0, linetype = "dashed") +
   theme_bw() +
-  xlab("zu sch�tzende Zeit (in Hundertstelsekunden)") +
+  xlab("zu schätzende Zeit (in Hundertstelsekunden)") +
   ylab("relative Abweichung") +
-  ggtitle("relative Abweichungen der Sch�tzungen (M�nner)") +
+  ggtitle("relative Abweichungen der Schätzungen (Männer)") +
   ylim(-0.3, 0.45) +
   geom_point(pch = 16, size = 3)
 
@@ -351,9 +353,9 @@ w_abs <- ggplot(weibl, aes(ziel_schaetzung_hdtsek, rel_abweichung_abs)) +
                alpha = 0.6) +
   geom_hline(yintercept = 0, linetype = "dashed") +
   theme_bw() +
-  xlab("zu sch�tzende Zeit (in Hundertstelsekunden)") +
-  ylab("betragsm��ige relative Abweichung") +
-  ggtitle("betragsm. rel. Abweichungen der Sch�tzungen (Frauen)") +
+  xlab("zu schätzende Zeit (in Hundertstelsekunden)") +
+  ylab("betragsmäßige relative Abweichung") +
+  ggtitle("betragsm. rel. Abweichungen der Schätzungen (Frauen)") +
   ylim(-0.01, 0.45) +
   geom_point(pch = 16, size = 3)
 
@@ -363,15 +365,15 @@ m_abs <- ggplot(maennl, aes(ziel_schaetzung_hdtsek, rel_abweichung_abs)) +
                alpha = 0.6) +
   geom_hline(yintercept = 0, linetype = "dashed") +
   theme_bw() +
-  xlab("zu sch�tzende Zeit (in Hundertstelsekunden)") +
-  ylab("betragsm��ige relative Abweichung") +
-  ggtitle("betragsm. rel. Abweichungen der Sch�tzungen (M�nner)") +
+  xlab("zu schätzende Zeit (in Hundertstelsekunden)") +
+  ylab("betragsmäßige relative Abweichung") +
+  ggtitle("betragsm. rel. Abweichungen der Schätzungen (Männer)") +
   ylim(-0.01, 0.45) +
   geom_point(pch = 16, size = 3)
 
 w_abs + m_abs
 
-#  Auswertugn nach Tag ##################################################
+#  Auswertung nach Tag ##################################################
 
 # relative Abweichungen
 median(zeit20$rel_abweichung[zeit20$tag=="Tag 1"])
