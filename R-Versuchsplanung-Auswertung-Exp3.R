@@ -190,21 +190,24 @@ ggplot(werte, aes(ziel_schaetzung_hdtsek/100, rel_abweichung))+
 weibl <- subset(werte, werte$geschlecht== "weiblich")
 maennl <- subset(werte, werte$geschlecht== "maennlich")
 
-par(mfrow = c(1,2))
-plot1 <- ggplot(weibl, aes(ziel_schaetzung_hdtsek, rel_abweichung))+
+plot1 <- ggplot(weibl, aes(ziel_schaetzung_hdtsek, rel_abweichung_abs))+
   geom_point() +
   geom_hline(yintercept = 0, linetype = "dashed") +
   theme_bw() +
   xlab("zu schätzende Zeit (in Hundertstelsekunden)") +
-  ylab("relative Abweichung") +
-  ggtitle("rel. Abweichungen der Schätzungen (Frauen)")
+  ylab("betragsmäßige relative Abweichung") +
+  ggtitle("rel. Abweichungen der Schätzungen (Frauen)") +
+  geom_smooth(method = "lm") +
+  ylim(-0.1, 0.5)
 
-plot2 <- ggplot(maennl, aes(ziel_schaetzung_hdtsek, rel_abweichung))+
+plot2 <- ggplot(maennl, aes(ziel_schaetzung_hdtsek, rel_abweichung_abs))+
   geom_point() +
   geom_hline(yintercept = 0, linetype = "dashed") +
   theme_bw() +
   xlab("zu schätzende Zeit (in Hundertstelsekunden)") +
-  ylab("relative Abweichung") +
-  ggtitle("rel. Abweichungen der Schätzungen (Männer)")
+  ylab("betragsmäßige relative Abweichung") +
+  ggtitle("rel. Abweichungen der Schätzungen (Männer)") +
+  geom_smooth(method = "lm") +
+  ylim(-0.1, 0.5)
 
 plot1 + plot2
