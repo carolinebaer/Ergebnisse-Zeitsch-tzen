@@ -190,7 +190,8 @@ ggplot(werte, aes(ziel_schaetzung_hdtsek/100, rel_abweichung))+
 weibl <- subset(werte, werte$geschlecht== "weiblich")
 maennl <- subset(werte, werte$geschlecht== "maennlich")
 
-plot1 <- ggplot(weibl, aes(ziel_schaetzung_hdtsek, rel_abweichung_abs))+
+# Plot der betragsm. rel. Abweichung stratifiziert nach Geschlecht
+plot1 <- ggplot(weibl, aes(ziel_schaetzung_hdtsek, rel_abweichung_abs)) +
   geom_point() +
   geom_hline(yintercept = 0, linetype = "dashed") +
   theme_bw() +
@@ -200,7 +201,7 @@ plot1 <- ggplot(weibl, aes(ziel_schaetzung_hdtsek, rel_abweichung_abs))+
   geom_smooth(method = "lm") +
   ylim(-0.1, 0.5)
 
-plot2 <- ggplot(maennl, aes(ziel_schaetzung_hdtsek, rel_abweichung_abs))+
+plot2 <- ggplot(maennl, aes(ziel_schaetzung_hdtsek, rel_abweichung_abs)) +
   geom_point() +
   geom_hline(yintercept = 0, linetype = "dashed") +
   theme_bw() +
@@ -211,3 +212,57 @@ plot2 <- ggplot(maennl, aes(ziel_schaetzung_hdtsek, rel_abweichung_abs))+
   ylim(-0.1, 0.5)
 
 plot1 + plot2
+
+
+# Boxplot der rel. Abweichungen stratifiziert nach Geschlecht
+p1 <- ggplot(weibl, aes(ziel_schaetzung_hdtsek, rel_abweichung)) +
+  geom_boxplot(aes(group = ziel_schaetzung), 
+               fill = c("darkolivegreen3", "cadetblue2", "lightcoral")) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  theme_bw() +
+  xlab("zu schätzende Zeit (in Hundertstelsekunden)") +
+  ylab("relative Abweichung") +
+  ggtitle("rel. Abweichungen der Schätzungen (Frauen)") +
+  ylim(-0.3, 0.4)
+
+p2 <- ggplot(maennl, aes(ziel_schaetzung_hdtsek, rel_abweichung)) +
+  geom_boxplot(aes(group = ziel_schaetzung), 
+               fill = c("darkolivegreen3", "cadetblue2", "lightcoral")) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  theme_bw() +
+  xlab("zu schätzende Zeit (in Hundertstelsekunden)") +
+  ylab("relative Abweichung") +
+  ggtitle("rel. Abweichungen der Schätzungen (Männer)") +
+  ylim(-0.3, 0.4)
+
+p1 + p2
+
+
+
+
+t.test(weibl$rel_abweichung_abs, alternative = "greater", 
+       mu = 0, conf.level = 0.95)
+# One Sample t-test
+# 
+# data:  weibl$rel_abweichung_abs
+# t = 5.0024, df = 11, p-value = 0.0002005
+# alternative hypothesis: true mean is greater than 0
+# 95 percent confidence interval:
+#   0.1047461       Inf
+# sample estimates:
+#   mean of x 
+# 0.1634111 
+
+t.test(maennl$rel_abweichung_abs, alternative = "greater", 
+       mu = 0, conf.level = 0.95)
+# One Sample t-test
+# 
+# data:  maennl$rel_abweichung_abs
+# t = 3.572, df = 10, p-value = 0.002539
+# alternative hypothesis: true mean is greater than 0
+# 95 percent confidence interval:
+#   0.06392269        Inf
+# sample estimates:
+#   mean of x 
+# 0.1297667
+
