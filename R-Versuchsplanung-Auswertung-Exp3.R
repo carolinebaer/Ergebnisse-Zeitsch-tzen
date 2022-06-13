@@ -104,6 +104,8 @@ summary(lm(zeiten$rel_abweichung ~ x_sek))$coef
 # x_sek        0.002330156 0.001053756  2.211285 0.0382408
 plot(x_sek,zeiten$rel_abweichung)
 abline(lm(zeiten$rel_abweichung ~ x_sek))
+plot(lm(zeiten$rel_abweichung ~ x_sek), which = 2)
+# Normalverteilungsannahme scheint zu passen
 
 mean(zeit20$rel_abweichung, na.rm = TRUE) 
 #[1] -0.125
