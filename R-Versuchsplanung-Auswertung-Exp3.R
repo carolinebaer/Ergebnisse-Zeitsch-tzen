@@ -98,7 +98,12 @@ summary(lin_modell_sek)
 # Multiple R-squared:  0.1123,	Adjusted R-squared:  0.0235 
 # F-statistic: 1.265 on 2 and 20 DF,  p-value: 0.304
 
-
+summary(lm(zeiten$rel_abweichung ~ x_sek))$coef
+#                 Estimate  Std. Error   t value  Pr(>|t|)
+# (Intercept) -0.189042708 0.072342075 -2.613178 0.0162401
+# x_sek        0.002330156 0.001053756  2.211285 0.0382408
+plot(x_sek,zeiten$rel_abweichung)
+abline(lm(zeiten$rel_abweichung ~ x_sek))
 
 mean(zeit20$rel_abweichung, na.rm = TRUE) 
 #[1] -0.125
