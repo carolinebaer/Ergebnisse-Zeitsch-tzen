@@ -469,4 +469,27 @@ shapiro.test(zeiten$rel_abweichung_abs)
 
 ## da der p-Wert groesser als 0.05 ist, koennen wir Normalverteilung annehmen
 
+# t-Test:____________________________________________________________
+t.test(zeiten$rel_abweichung_abs, alternative = "greater", mu = 0, 
+       conf.level = 0.95)
+# One Sample t-test
+# 
+# data:  zeiten$rel_abweichung_abs
+# t = 6.1271, df = 22, p-value = 1.813e-06
+# alternative hypothesis: true mean is greater than 0
+# 95 percent confidence interval:
+#   0.1060332       Inf
+# sample estimates:
+#   mean of x 
+# 0.1473203
 
+
+## Teststatistik: T = 6.1271
+qt(0.95, 22)
+# [1] 1.717144
+## Kritischer Wert: t_(22; 1-0.05) = 1.717144
+## p-Wert: 1.813e-06
+
+## Teststatistik groesser als kritischer Wert, p-Wert < 0.05
+## ==> lehne H0 ab
+## die Steigung ist >0
