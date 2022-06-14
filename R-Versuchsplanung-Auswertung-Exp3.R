@@ -469,6 +469,29 @@ shapiro.test(zeiten$rel_abweichung_abs)
 
 ## da der p-Wert groesser als 0.05 ist, koennen wir Normalverteilung annehmen
 
+# Vortest auf Residuen der lm-Modelle
+shapiro.test(residuals(lm(zeiten$rel_abweichung ~ x_sek)))
+# Shapiro-Wilk normality test
+# 
+# data:  residuals(lm(zeiten$rel_abweichung ~ x_sek))
+# W = 0.9801, p-value = 0.9078
+shapiro.test(residuals(lm(zeiten$rel_abweichung_abs ~ x_sek)))
+# Shapiro-Wilk normality test
+# 
+# data:  residuals(lm(zeiten$rel_abweichung_abs ~ x_sek))
+# W = 0.9318, p-value = 0.1196
+
+shapiro.test(residuals(lm(zeiten$rel_abweichung ~ x_sek + I(x_sek^2))))
+# Shapiro-Wilk normality test
+# 
+# data:  residuals(lm(zeiten$rel_abweichung ~ x_sek + I(x_sek^2)))
+# W = 0.98195, p-value = 0.9365
+shapiro.test(residuals(lm(zeiten$rel_abweichung_abs ~ x_sek + I(x_sek^2))))
+# Shapiro-Wilk normality test
+# 
+# data:  residuals(lm(zeiten$rel_abweichung_abs ~ x_sek + I(x_sek^2)))
+# W = 0.95089, p-value = 0.3053
+
 # t-Test:____________________________________________________________
 t.test(zeiten$rel_abweichung_abs, alternative = "greater", mu = 0, 
        conf.level = 0.95)
