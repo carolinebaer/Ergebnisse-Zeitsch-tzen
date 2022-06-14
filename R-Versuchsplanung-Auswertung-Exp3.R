@@ -460,3 +460,13 @@ boxplot(zeit20$rel_abweichung_abs[zeit20$tag=="Tag 2"],
 abline(h=0, col = "darkblue", lty = 5)
 
 
+# Vortest mittels Shapiro-Wilk-Test:___________________________________
+shapiro.test(zeiten$rel_abweichung_abs)
+# Shapiro-Wilk normality test
+# 
+# data:  zeiten$rel_abweichung_abs
+# W = 0.93477, p-value = 0.1386
+
+## da der p-Wert groesser als 0.05 ist, koennen wir Normalverteilung annehmen
+
+
