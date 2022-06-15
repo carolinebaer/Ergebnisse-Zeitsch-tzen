@@ -516,3 +516,7 @@ qt(0.95, 22)
 ## Teststatistik groesser als kritischer Wert, p-Wert < 0.05
 ## ==> lehne H0 ab
 ## die Steigung ist >0
+
+
+summary(lm(zeiten$rel_abweichung_abs ~ x))
+xtable(summary(lm(zeiten$rel_abweichung_abs ~ x)))
