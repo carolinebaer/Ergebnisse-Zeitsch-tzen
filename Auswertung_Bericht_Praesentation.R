@@ -27,9 +27,6 @@ shapiro.test(residuals(lm(y1 ~ x + I(x^2))))
 shapiro.test(residuals(lm(y2 ~ x + I(x^2))))
 # W = 0.98195, p-value = 0.9365
 
-# Q-Q-Plot
-plot(lm(y1 ~ x), which = 2) # passt nicht optimal
-plot(lm(y2 ~ x), which = 2) # sieht ziemlich gut aus
 
 # Regression/t-Test
 summary(lm(y1 ~ x))$coef
