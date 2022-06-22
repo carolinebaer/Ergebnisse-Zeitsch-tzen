@@ -105,7 +105,13 @@ summary(lm(zeiten$rel_abweichung ~ x_sek))$coef
 plot(x_sek,zeiten$rel_abweichung)
 abline(lm(zeiten$rel_abweichung ~ x_sek))
 # Q-Q-Plot
+x <- versuchsprotokoll$ziel_schaetzung_hdtsek/100
+y1 <- versuchsprotokoll$rel_abweichung_abs
+y2 <- versuchsprotokoll$rel_abweichung
 plot(lm(zeiten$rel_abweichung ~ x_sek), which = 2)
+plot(lm(y1 ~ x), which = 2) # passt nicht optimal
+plot(lm(y2 ~ x), which = 2) # sieht ziemlich gut aus
+
 # Normalverteilungsannahme scheint zu passen
 
 mean(zeit20$rel_abweichung, na.rm = TRUE) 
