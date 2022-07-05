@@ -59,12 +59,9 @@ hand_rechts <- subset(erg, erg$Haendigkeit == "rechts")
 # insg - Drahtsorte
 # insg - Biegerichtung
 # (insg - Haendigkeit)
-# Tag 1  - Drahtsorte
-# Tag 1 - Biegerichtung
-# (Tag 1 - Haendigkeit)
-# Tag 2 - Drahtsorte
-# Tag 2 - Biegerichtung
-# (Tag 2 - Haendigkeit)
+# Tag  - Drahtsorte
+# Tag - Biegerichtung
+# (Tag - Haendigkeit)
 # Draht - Biegerichtung
 # Haendigkeit - Biegerichtung
 # Draht - Haendigkeit
@@ -111,7 +108,7 @@ ggplot(erg, aes(Haendigkeit, Biegungsanzahl)) +
   geom_point(pch = 16, size = 3)
 
 
-# Tag 1 - Drahtsorte
+# Tag - Drahtsorte
 ggplot(tag_eins, aes(Drahtsorte, Biegungsanzahl)) +
   geom_boxplot(aes(group = Drahtsorte), fill = c("lightcoral", "cadetblue2"), 
                alpha = 0.7) +
@@ -121,10 +118,24 @@ ggplot(tag_eins, aes(Drahtsorte, Biegungsanzahl)) +
         panel.grid.minor = element_line(colour = "grey90"),
         panel.grid.major = element_line(colour = "grey90"),
         panel.ontop = FALSE) +
-  geom_point(pch = 16, size = 3) # Ueberlappung mancher Punkte
+  geom_point(pch = 16, size = 3) + # Ueberlappung mancher Punkte
+  ylim(0, 40) +
+  ggtitle("Tag 1") +
+ggplot(tag_zwei, aes(Drahtsorte, Biegungsanzahl)) +
+  geom_boxplot(aes(group = Drahtsorte), fill = c("lightcoral", "cadetblue2"), 
+               alpha = 0.7) +
+  theme(text = element_text(size = 25), 
+        panel.border = element_rect(fill = NA, colour = "black"),
+        panel.background = element_rect(fill = NA), 
+        panel.grid.minor = element_line(colour = "grey90"),
+        panel.grid.major = element_line(colour = "grey90"),
+        panel.ontop = FALSE) +
+  geom_point(pch = 16, size = 3) +
+  ylim(0, 40) +
+  ggtitle("Tag 1")
 
 
-# Tag 1 - Biegerichtung
+# Tag - Biegerichtung
 ggplot(tag_eins, aes(Biegerichtung, Biegungsanzahl)) +
   geom_boxplot(aes(group = Biegerichtung), fill = c("lightcoral", "cadetblue2", 
                                                     "lightgreen"), 
@@ -135,36 +146,9 @@ ggplot(tag_eins, aes(Biegerichtung, Biegungsanzahl)) +
         panel.grid.minor = element_line(colour = "grey90"),
         panel.grid.major = element_line(colour = "grey90"),
         panel.ontop = FALSE) +
-  geom_point(pch = 16, size = 3)
-
-
-# Tag 1 - Haendigkeit
-ggplot(tag_eins, aes(Haendigkeit, Biegungsanzahl)) +
-  geom_boxplot(aes(group = Haendigkeit), fill = c("lightcoral", "cadetblue2"), 
-               alpha = 0.7) +
-  theme(text = element_text(size = 25), 
-        panel.border = element_rect(fill = NA, colour = "black"),
-        panel.background = element_rect(fill = NA), 
-        panel.grid.minor = element_line(colour = "grey90"),
-        panel.grid.major = element_line(colour = "grey90"),
-        panel.ontop = FALSE) +
-  geom_point(pch = 16, size = 3)
-
-
-# Tag 2 - Drahtsorte
-ggplot(tag_zwei, aes(Drahtsorte, Biegungsanzahl)) +
-  geom_boxplot(aes(group = Drahtsorte), fill = c("lightcoral", "cadetblue2"), 
-               alpha = 0.7) +
-  theme(text = element_text(size = 25), 
-        panel.border = element_rect(fill = NA, colour = "black"),
-        panel.background = element_rect(fill = NA), 
-        panel.grid.minor = element_line(colour = "grey90"),
-        panel.grid.major = element_line(colour = "grey90"),
-        panel.ontop = FALSE) +
-  geom_point(pch = 16, size = 3) 
-
-
-# Tag 2 - Biegerichtung
+  geom_point(pch = 16, size = 3) +
+  ylim(0, 40) +
+  ggtitle("Tag 1") +
 ggplot(tag_zwei, aes(Biegerichtung, Biegungsanzahl)) +
   geom_boxplot(aes(group = Biegerichtung), fill = c("lightcoral", "cadetblue2", 
                                                     "lightgreen"), 
@@ -175,10 +159,24 @@ ggplot(tag_zwei, aes(Biegerichtung, Biegungsanzahl)) +
         panel.grid.minor = element_line(colour = "grey90"),
         panel.grid.major = element_line(colour = "grey90"),
         panel.ontop = FALSE) +
-  geom_point(pch = 16, size = 3)
+  geom_point(pch = 16, size = 3) +
+  ylim(0, 40) +
+  ggtitle("Tag 2")
 
 
-# Tag 2 - Haendigkeit
+# Tag - Haendigkeit
+ggplot(tag_eins, aes(Haendigkeit, Biegungsanzahl)) +
+  geom_boxplot(aes(group = Haendigkeit), fill = c("lightcoral", "cadetblue2"), 
+               alpha = 0.7) +
+  theme(text = element_text(size = 25), 
+        panel.border = element_rect(fill = NA, colour = "black"),
+        panel.background = element_rect(fill = NA), 
+        panel.grid.minor = element_line(colour = "grey90"),
+        panel.grid.major = element_line(colour = "grey90"),
+        panel.ontop = FALSE) +
+  geom_point(pch = 16, size = 3) +
+  ylim(0, 40) +
+  ggtitle("Tag 1") +
 ggplot(tag_zwei, aes(Haendigkeit, Biegungsanzahl)) +
   geom_boxplot(aes(group = Haendigkeit), fill = c("lightcoral", "cadetblue2"), 
                alpha = 0.7) +
@@ -188,7 +186,9 @@ ggplot(tag_zwei, aes(Haendigkeit, Biegungsanzahl)) +
         panel.grid.minor = element_line(colour = "grey90"),
         panel.grid.major = element_line(colour = "grey90"),
         panel.ontop = FALSE) +
-  geom_point(pch = 16, size = 3)
+  geom_point(pch = 16, size = 3) +
+  ylim(0, 40) +
+  ggtitle("Tag 2")
 
 
 # Draht - Biegerichtung
@@ -203,6 +203,7 @@ ggplot(draht_rot, aes(Biegerichtung, Biegungsanzahl)) +
         panel.grid.major = element_line(colour = "grey90"),
         panel.ontop = FALSE) +
   geom_point(pch = 16, size = 3) +
+  ylim(0, 40) +
   ggtitle("Bei Eisendraht (rot)") +
   ggplot(draht_silber, aes(Biegerichtung, Biegungsanzahl)) +
   geom_boxplot(aes(group = Biegerichtung), fill = c("lightcoral", "cadetblue2", 
@@ -215,6 +216,7 @@ ggplot(draht_rot, aes(Biegerichtung, Biegungsanzahl)) +
         panel.grid.major = element_line(colour = "grey90"),
         panel.ontop = FALSE) +
   geom_point(pch = 16, size = 3) +
+  ylim(0, 40) +
   ggtitle("Bei Stahldraht (silber)")
 
 
@@ -230,8 +232,9 @@ ggplot(hand_links, aes(Biegerichtung, Biegungsanzahl)) +
         panel.grid.major = element_line(colour = "grey90"),
         panel.ontop = FALSE) +
   geom_point(pch = 16, size = 3) +
+  ylim(0, 40) +
   ggtitle("Bei Linkshändigkeit") +
-  ggplot(hand_rechts, aes(Biegerichtung, Biegungsanzahl)) +
+ggplot(hand_rechts, aes(Biegerichtung, Biegungsanzahl)) +
   geom_boxplot(aes(group = Biegerichtung), fill = c("lightcoral", "cadetblue2", 
                                                     "lightgreen"), 
                alpha = 0.7) +
@@ -242,6 +245,7 @@ ggplot(hand_links, aes(Biegerichtung, Biegungsanzahl)) +
         panel.grid.major = element_line(colour = "grey90"),
         panel.ontop = FALSE) +
   geom_point(pch = 16, size = 3) +
+  ylim(0, 40) +
   ggtitle("Bei Rechtshandigkeit")
 
 
@@ -256,6 +260,7 @@ ggplot(draht_rot, aes(Haendigkeit, Biegungsanzahl)) +
         panel.grid.major = element_line(colour = "grey90"),
         panel.ontop = FALSE) +
   geom_point(pch = 16, size = 3) +
+  ylim(0, 40) +
   ggtitle("Bei Eisendraht (rot)") +
   ggplot(draht_silber, aes(Haendigkeit, Biegungsanzahl)) +
   geom_boxplot(aes(group = Haendigkeit), fill = c("lightcoral", "cadetblue2"), 
@@ -267,15 +272,106 @@ ggplot(draht_rot, aes(Haendigkeit, Biegungsanzahl)) +
         panel.grid.major = element_line(colour = "grey90"),
         panel.ontop = FALSE) +
   geom_point(pch = 16, size = 3) +
+  ylim(0, 40) +
   ggtitle("Bei Stahldraht (silber)")
 
 
+
+##### VORTESTS - SHAPIRO-WILK #####=============================================
+
+# ab eine Stichprobengroesse von 3 moeglich 
+# --> daher nicht allein fuer einen Tag durchfuehrbar
+
+
+### Eisendraht (rot): ___________
+##  Linkshaenderin: -----
+
+# mo-mu
+rot_links_mo_mu <- subset(draht_rot, draht_rot$Biegerichtung == "mo-mu" 
+                          & draht_rot$Haendigkeit == "links")
+shapiro.test(rot_links_mo_mu$Biegungsanzahl)
+
+# lo-ru
+rot_links_lo_ru <- subset(draht_rot, draht_rot$Biegerichtung == "lo-ru" 
+                          & draht_rot$Haendigkeit == "links")
+shapiro.test(rot_links_lo_ru$Biegungsanzahl)
+
+# ro-lu
+rot_links_ro_lu <- subset(draht_rot, draht_rot$Biegerichtung == "ro-lu" 
+                          & draht_rot$Haendigkeit == "links")
+shapiro.test(rot_links_ro_lu$Biegungsanzahl)
+
+
+## Rechtshaenderin: -----
+
+# mo-mu
+rot_rechts_mo_mu <- subset(draht_rot, draht_rot$Biegerichtung == "mo-mu" 
+                           & draht_rot$Haendigkeit == "rechts")
+shapiro.test(rot_rechts_mo_mu$Biegungsanzahl)
+
+# lo-ru
+rot_rechts_lo_ru <- subset(draht_rot, draht_rot$Biegerichtung == "lo-ru" 
+                           & draht_rot$Haendigkeit == "rechts")
+shapiro.test(rot_rechts_lo_ru$Biegungsanzahl)
+
+# ro-lu
+rot_rechts_ro_lu <- subset(draht_rot, draht_rot$Biegerichtung == "ro-lu" 
+                           & draht_rot$Haendigkeit == "rechts")
+shapiro.test(rot_rechts_ro_lu$Biegungsanzahl)
+
+
+### Stahldraht (silber): ________
+##  Linkshaenderin: -----
+
+# mo-mu
+silber_links_mo_mu <- subset(draht_silber, draht_silber$Biegerichtung == "mo-mu" 
+                             & draht_silber$Haendigkeit == "links")
+shapiro.test(silber_links_mo_mu$Biegungsanzahl)
+
+# lo-ru
+silber_links_lo_ru <- subset(draht_silber, draht_silber$Biegerichtung == "lo-ru" 
+                             & draht_silber$Haendigkeit == "links")
+shapiro.test(silber_links_lo_ru$Biegungsanzahl)
+
+# ro-lu
+silber_links_ro_lu <- subset(draht_silber, draht_silber$Biegerichtung == "ro-lu" 
+                             & draht_silber$Haendigkeit == "links")
+shapiro.test(silber_links_ro_lu$Biegungsanzahl)
+
+
+## Rechtshaenderin: -----
+
+# mo-mu
+silber_rechts_mo_mu <- subset(draht_silber, draht_silber$Biegerichtung == "mo-mu" 
+                              & draht_silber$Haendigkeit == "rechts")
+shapiro.test(silber_rechts_mo_mu$Biegungsanzahl)
+
+# lo-ru
+silber_rechts_lo_ru <- subset(draht_silber, draht_silber$Biegerichtung == "lo-ru" 
+                              & draht_silber$Haendigkeit == "rechts")
+shapiro.test(silber_rechts_lo_ru$Biegungsanzahl)
+
+# ro-lu
+silber_rechts_ro_lu <- subset(draht_silber, draht_silber$Biegerichtung == "ro-lu" 
+                              & draht_silber$Haendigkeit == "rechts")
+shapiro.test(silber_rechts_ro_lu$Biegungsanzahl)
+
+
+##### VORTESTS - BARTLETT #####=================================================
+
+bartlett.test(Biegungsanzahl ~ Drahtsorte, data = erg)
+
+bartlett.test(Biegungsanzahl ~ Biegerichtung , data = erg)
+
+bartlett.test(Biegungsanzahl ~ Haendigkeit , data = erg)
+
+
+
 ##### LINEARES MODELL #####=====================================================
+modell <- aov(Biegungsanzahl ~ Drahtsorte + Biegerichtung + Haendigkeit, 
+              data = erg)
+summary(modell)
+anova(modell)
 
-
-
-
-##### VORTESTS #####============================================================
-#shapiro.test()
 
 
