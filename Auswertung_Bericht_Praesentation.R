@@ -86,9 +86,9 @@ ggplot(zeiten, aes(ziel_schaetzung_hdtsek/100, rel_abweichung_abs)) +
         panel.grid.minor = element_line(colour = "grey90"),
         panel.grid.major = element_line(colour = "grey90"),
         panel.ontop = FALSE) +
-  xlab("zu sch‰tzende Zeit (in Sekunden)") +
-  ylab("betragsm‰ﬂige relative Abweichung") +
-  # ggtitle("Betragsm‰ﬂige relative Abweichungen der Sch‰tzungen") +
+  xlab("zu sch?tzende Zeit (in Sekunden)") +
+  ylab("betragsm??ige relative Abweichung") +
+  # ggtitle("Betragsm??ige relative Abweichungen der Sch?tzungen") +
   geom_point(pch = 16, size = 3) +
   scale_x_continuous(breaks = c(20, 60, 100), limits = c(5, 115)) 
 
@@ -105,9 +105,9 @@ ggplot(zeiten, aes(ziel_schaetzung_hdtsek/100, rel_abweichung)) +
         panel.grid.minor = element_line(colour = "grey90"),
         panel.grid.major = element_line(colour = "grey90"),
         panel.ontop = FALSE) +
-  xlab("zu sch‰tzende Zeit (in Sekunden)") +
+  xlab("zu sch?tzende Zeit (in Sekunden)") +
   ylab("relative Abweichung") +
-  # ggtitle("Relative Abweichungen der Sch‰tzungen") +
+  # ggtitle("Relative Abweichungen der Sch?tzungen") +
   geom_point(pch = 16, size = 3) +
   scale_x_continuous(breaks = c(20, 60, 100), limits = c(5, 115))
 
@@ -124,7 +124,7 @@ ggplot(tag1, aes(ziel_schaetzung_hdtsek/100, rel_abweichung)) +
         panel.grid.minor = element_line(colour = "grey90"),
         panel.grid.major = element_line(colour = "grey90"),
         panel.ontop = FALSE) +
-  xlab("zu sch‰tzende Zeit (in Sekunden)") +
+  xlab("zu sch?tzende Zeit (in Sekunden)") +
   ylab("relative Abweichung") +
   ggtitle("Tag 1") +
   ylim(-0.32, 0.42) +
@@ -141,7 +141,7 @@ ggplot(tag1, aes(ziel_schaetzung_hdtsek/100, rel_abweichung)) +
         panel.grid.minor = element_line(colour = "grey90"),
         panel.grid.major = element_line(colour = "grey90"),
         panel.ontop = FALSE) +
-  xlab("zu sch‰tzende Zeit (in Sekunden)") +
+  xlab("zu sch?tzende Zeit (in Sekunden)") +
   ylab("relative Abweichung") +
   ggtitle("Tag 2") +
   ylim(-0.32, 0.42) +
@@ -304,3 +304,82 @@ xtable(tab_relativ_tag, digits = 4)
 xtable(tab_20_sek, digits = 4)
 xtable(tab_60_sek, digits = 4)
 xtable(tab_100_sek, digits = 4)
+
+
+# Grafiken Analyse
+
+# Modell A
+liMoZeit_1 <- lm(y1 ~ x)
+liMoZeit_2 <- lm(y1 ~ x + I(x^2))
+liMoZeit_2_func <- function(x, model){
+  Y <- matrix(c(rep(1, length(x)), x, x^2), ncol = 3) %*% model$coefficients
+  if(length(x) == 1) return(c(Y))
+  return(Y)
+}
+# Tiefpunkt der Funktion A
+liMoZeit_2_f_min <- optimize(liMoZeit_2_func, model = liMoZeit_2, 
+                             interval = c(20, 100))
+
+# Grafik A:
+opar1 <- par(oma = c(2, 0, 2, 0))
+opar2 <- par(mar = c(4.6, 6.1, 4.1, 7.8))
+
+plot(x, y1, xaxt = "n", ann = FALSE, xlim = c(0, 110))
+axis(1, at = c(0, 20, round(liMoZeit_2_f_min$minimum, 2), 60, 100),
+     labels = c(NA, 20, round(liMoZeit_2_f_min$minimum, 2), 60, 100), 
+     cex.axis = 1.2)
+title(main = "Abweichung der geschaetzten Zeit\nzur zu schaetzenden Zeit", 
+      xlab = "zu schaetzende Zeit (in Sekunden)", cex.main = 1.7, 
+      ylab = "relative Abweichung im Betrag", cex.lab = 1.4)
+abline(liMoZeit_1, col = rgb(1, 0, 0, alpha = 0.8))
+curve(liMoZeit_2_func(x, model = liMoZeit_2), from = -10, to = 120, 
+      add = TRUE, col = "darkorange")
+points(liMoZeit_2_f_min$minimum, liMoZeit_2_f_min$objective, pch = 23, 
+       col = "darkgreen", bg = "darkorange", cex = 0.9)
+par(xpd = TRUE)
+legend("topright", inset = c(-0.365, 0), pch = c(NA, NA, 18), lwd = c(1, 1, NA), 
+    legend = c("lineare\nRegression", "quadratische\nRegression", "Tiefpunkt"),
+       col = c("red2", "darkorange", "darkorange"), y.intersp = 1.6)#, cex = 0.5
+par(xpd = FALSE)
+
+
+# Modell B
+liMoZeit_1b <- lm(y2 ~ x)
+liMoZeit_2b <- lm(y2 ~ x + I(x^2))
+# Tiefpunkt der Funktion B
+liMoZeit_2b_f_min <- optimize(liMoZeit_2_func, model = liMoZeit_2b, 
+                             interval = c(0, 100))
+
+# Grafik B:
+plot(x, y2, xaxt = "n", ann = FALSE, xlim = c(0, 110))
+axis(1, at = c(0, 20, round(liMoZeit_2b_f_min$minimum, 2), 60, 100),
+     labels = c(0, 20, round(liMoZeit_2b_f_min$minimum, 2), 60, 100),
+     cex.axis = 1.2)
+title(main = "Abweichung der geschaetzten Zeit\nzur zu schaetzenden Zeit", 
+      xlab = "zu schaetzende Zeit (in Sekunden)", cex.main = 1.7, 
+      ylab = "relative Abweichung", cex.lab = 1.4)
+lines(c(-10, 120), c(0,0), col = "gray")
+abline(liMoZeit_1b, col = rgb(1, 0, 0, alpha = 0.8))
+curve(liMoZeit_2_func(x, model = liMoZeit_2b), from = -10, to = 120, 
+      add = TRUE, col = "darkorange")
+points(liMoZeit_2b_f_min$minimum, liMoZeit_2b_f_min$objective, pch = 23, 
+       col = "darkgreen", bg = "darkorange", cex = 0.9)
+par(xpd = TRUE)
+legend("topright", inset = c(-0.365, 0), pch = c(NA, NA, 18), lwd = c(1, 1, NA), 
+       legend = c("lineare\nRegression", "quadratische\nRegression", "Tiefpunkt"),
+       col = c("red2", "darkorange", "darkorange"), y.intersp = 1.6)#, cex = 0.6
+par(xpd = FALSE)
+
+par(opar1)
+par(opar2)
+
+
+# Tabbellenwerte Analyse
+summary(liMoZeit_1)$sigma       # 0.1135555
+summary(liMoZeit_1)$r.squared   # 0.07429813
+summary(liMoZeit_1b)$sigma      # 0.168601
+summary(liMoZeit_1b)$r.squared  # 0.1888692
+summary(liMoZeit_2)$sigma       # 0.1139482
+summary(liMoZeit_2)$r.squared   # 0.1122709
+summary(liMoZeit_2b)$sigma      # 0.1704352
+summary(liMoZeit_2b)$r.squared  # 0.2105949
