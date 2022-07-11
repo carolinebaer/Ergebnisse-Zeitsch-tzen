@@ -290,16 +290,31 @@ ggplot(draht_rot, aes(Haendigkeit, Biegungsanzahl)) +
 rot_links_mo_mu <- subset(draht_rot, draht_rot$Biegerichtung == "mo-mu" 
                           & draht_rot$Haendigkeit == "links")
 shapiro.test(rot_links_mo_mu$Biegungsanzahl)
+# Shapiro-Wilk normality test
+# 
+# data:  rot_links_mo_mu$Biegungsanzahl
+# W = 0.89495, p-value = 0.4064
+
 
 # lo-ru
 rot_links_lo_ru <- subset(draht_rot, draht_rot$Biegerichtung == "lo-ru" 
                           & draht_rot$Haendigkeit == "links")
 shapiro.test(rot_links_lo_ru$Biegungsanzahl)
+# Shapiro-Wilk normality test
+# 
+# data:  rot_links_lo_ru$Biegungsanzahl
+# W = 0.99291, p-value = 0.9719
+
 
 # ro-lu
 rot_links_ro_lu <- subset(draht_rot, draht_rot$Biegerichtung == "ro-lu" 
                           & draht_rot$Haendigkeit == "links")
 shapiro.test(rot_links_ro_lu$Biegungsanzahl)
+# Shapiro-Wilk normality test
+# 
+# data:  rot_links_ro_lu$Biegungsanzahl
+# W = 0.80056, p-value = 0.1032
+
 
 
 ## Rechtshaenderin: -----
@@ -308,16 +323,33 @@ shapiro.test(rot_links_ro_lu$Biegungsanzahl)
 rot_rechts_mo_mu <- subset(draht_rot, draht_rot$Biegerichtung == "mo-mu" 
                            & draht_rot$Haendigkeit == "rechts")
 shapiro.test(rot_rechts_mo_mu$Biegungsanzahl)
+# Shapiro-Wilk normality test
+# 
+# data:  rot_rechts_mo_mu$Biegungsanzahl
+# W = 0.86337, p-value = 0.2725
+
 
 # lo-ru
 rot_rechts_lo_ru <- subset(draht_rot, draht_rot$Biegerichtung == "lo-ru" 
                            & draht_rot$Haendigkeit == "rechts")
 shapiro.test(rot_rechts_lo_ru$Biegungsanzahl)
+# Shapiro-Wilk normality test
+# 
+# data:  rot_rechts_lo_ru$Biegungsanzahl
+# W = 0.72863, p-value = 0.02386
+
+## kleiner Niveau 0.05
+
 
 # ro-lu
 rot_rechts_ro_lu <- subset(draht_rot, draht_rot$Biegerichtung == "ro-lu" 
                            & draht_rot$Haendigkeit == "rechts")
 shapiro.test(rot_rechts_ro_lu$Biegungsanzahl)
+# Shapiro-Wilk normality test
+# 
+# data:  rot_rechts_ro_lu$Biegungsanzahl
+# W = 0.86337, p-value = 0.2725
+
 
 
 ### Stahldraht (silber): ________
@@ -327,16 +359,32 @@ shapiro.test(rot_rechts_ro_lu$Biegungsanzahl)
 silber_links_mo_mu <- subset(draht_silber, draht_silber$Biegerichtung == "mo-mu" 
                              & draht_silber$Haendigkeit == "links")
 shapiro.test(silber_links_mo_mu$Biegungsanzahl)
+# Shapiro-Wilk normality test
+# 
+# data:  silber_links_mo_mu$Biegungsanzahl
+# W = 0.75295, p-value = 0.04114
+
+## kleiner als Niveau 0.05
+
 
 # lo-ru
 silber_links_lo_ru <- subset(draht_silber, draht_silber$Biegerichtung == "lo-ru" 
                              & draht_silber$Haendigkeit == "links")
 shapiro.test(silber_links_lo_ru$Biegungsanzahl)
+# Shapiro-Wilk normality test
+# 
+# data:  silber_links_lo_ru$Biegungsanzahl
+# W = 0.93153, p-value = 0.6034
+
 
 # ro-lu
 silber_links_ro_lu <- subset(draht_silber, draht_silber$Biegerichtung == "ro-lu" 
                              & draht_silber$Haendigkeit == "links")
 shapiro.test(silber_links_ro_lu$Biegungsanzahl)
+# Shapiro-Wilk normality test
+# 
+# data:  silber_links_ro_lu$Biegungsanzahl
+# W = 0.91409, p-value = 0.5044
 
 
 ## Rechtshaenderin: -----
@@ -345,25 +393,55 @@ shapiro.test(silber_links_ro_lu$Biegungsanzahl)
 silber_rechts_mo_mu <- subset(draht_silber, draht_silber$Biegerichtung == "mo-mu" 
                               & draht_silber$Haendigkeit == "rechts")
 shapiro.test(silber_rechts_mo_mu$Biegungsanzahl)
+# Shapiro-Wilk normality test
+# 
+# data:  silber_rechts_mo_mu$Biegungsanzahl
+# W = 0.89495, p-value = 0.4064
+
 
 # lo-ru
 silber_rechts_lo_ru <- subset(draht_silber, draht_silber$Biegerichtung == "lo-ru" 
                               & draht_silber$Haendigkeit == "rechts")
 shapiro.test(silber_rechts_lo_ru$Biegungsanzahl)
+# Shapiro-Wilk normality test
+# 
+# data:  silber_rechts_lo_ru$Biegungsanzahl
+# W = 0.88952, p-value = 0.3809
+
 
 # ro-lu
 silber_rechts_ro_lu <- subset(draht_silber, draht_silber$Biegerichtung == "ro-lu" 
                               & draht_silber$Haendigkeit == "rechts")
 shapiro.test(silber_rechts_ro_lu$Biegungsanzahl)
+# Shapiro-Wilk normality test
+# 
+# data:  silber_rechts_ro_lu$Biegungsanzahl
+# W = 0.89519, p-value = 0.4075
+
 
 
 ##### VORTESTS - BARTLETT #####=================================================
 
 bartlett.test(Biegungsanzahl ~ Drahtsorte, data = erg)
+# Bartlett test of homogeneity of variances
+# 
+# data:  Biegungsanzahl by Drahtsorte
+# Bartlett's K-squared = 48.376, df = 1, p-value = 3.518e-12
+
 
 bartlett.test(Biegungsanzahl ~ Biegerichtung , data = erg)
+# Bartlett test of homogeneity of variances
+# 
+# data:  Biegungsanzahl by Biegerichtung
+# Bartlett's K-squared = 0.36327, df = 2, p-value = 0.8339
+
 
 bartlett.test(Biegungsanzahl ~ Haendigkeit , data = erg)
+# Bartlett test of homogeneity of variances
+# 
+# data:  Biegungsanzahl by Haendigkeit
+# Bartlett's K-squared = 1.9018, df = 1, p-value = 0.1679
+
 
 
 
