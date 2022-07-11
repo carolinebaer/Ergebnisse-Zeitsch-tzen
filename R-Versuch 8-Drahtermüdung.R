@@ -27,12 +27,12 @@ plan$book
 ##### DATENSATZ #####===========================================================
 
 ## Laden des Datensatzes:
-erg <- read_excel("Versuchsplan - Exp. 8 Drahterm�dung.xlsx")
+erg <- read_excel("Versuchsplan - Exp. 8 Drahtermüdung.xlsx")
 
 erg$Tag <- as.factor(erg$Tag)
 erg$Drahtsorte  <- as.factor(erg$Drahtsorte)
 erg$Biegerichtung <- as.factor(erg$Biegerichtung)
-erg$H�ndigkeit <- as.factor(erg$H�ndigkeit)
+erg$Händigkeit <- as.factor(erg$Händigkeit)
 names(erg) <- c("Nummer", "Tag", "Block", "Drahtsorte", "Biegerichtung", 
                 "Haendigkeit", "Biegungsanzahl", "Vorkommnisse")
 
@@ -233,7 +233,7 @@ ggplot(hand_links, aes(Biegerichtung, Biegungsanzahl)) +
         panel.ontop = FALSE) +
   geom_point(pch = 16, size = 3) +
   ylim(0, 40) +
-  ggtitle("Bei Linksh�ndigkeit") +
+  ggtitle("Bei Linksh?ndigkeit") +
 ggplot(hand_rechts, aes(Biegerichtung, Biegungsanzahl)) +
   geom_boxplot(aes(group = Biegerichtung), fill = c("lightcoral", "cadetblue2", 
                                                     "lightgreen"), 
@@ -450,6 +450,15 @@ modell <- aov(Biegungsanzahl ~ Drahtsorte + Biegerichtung + Haendigkeit,
               data = erg)
 summary(modell)
 anova(modell)
-
+# Analysis of Variance Table
+# 
+# Response: Biegungsanzahl
+#               Df  Sum Sq Mean Sq F value    Pr(>F)    
+# Drahtsorte     1 1938.02 1938.02 65.3105 3.635e-10 ***
+# Biegerichtung  2   17.79    8.90  0.2998    0.7425    
+# Haendigkeit    1   31.69   31.69  1.0679    0.3072    
+# Residuals     43 1275.98   29.67                      
+# ---
+#   Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 
