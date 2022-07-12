@@ -13,8 +13,8 @@ plan <- design.ab(4, trt = c(2,3,2), seed = 12322)
 names(plan$book) <- c("nummer", "block", "Drahtsorte", "Richtung", "Haendigkeit")
 plan$book
 
-plan$book$Drahtsorte[which(plan$book$Drahtsorte == "1")] <- "Eisendraht"
-plan$book$Drahtsorte[which(plan$book$Drahtsorte == "2")] <- "Stahldraht"
+plan$book$Drahtsorte[which(plan$book$Drahtsorte == "1")] <- "rot"
+plan$book$Drahtsorte[which(plan$book$Drahtsorte == "2")] <- "silber"
 plan$book$Richtung[which(plan$book$Richtung == "1")] <- "mo-mu"
 plan$book$Richtung[which(plan$book$Richtung == "2")] <- "lo-ru"
 plan$book$Richtung[which(plan$book$Richtung == "3")] <- "ro-lu"
@@ -43,8 +43,8 @@ names(erg) <- c("Nummer", "Tag", "Block", "Drahtsorte", "Biegerichtung",
 tag_eins <- erg[1:24, ]
 tag_zwei <- erg[25:48, ]
 
-draht_rot <- subset(erg, erg$Drahtsorte == "Eisen")
-draht_silber <- subset(erg, erg$Drahtsorte == "Stahl")
+draht_rot <- subset(erg, erg$Drahtsorte == "rot")
+draht_silber <- subset(erg, erg$Drahtsorte == "silber")
 
 biegericht_mo_mu <- subset(erg, erg$Biegerichtung == "mo-mu")
 biegericht_lo_ru <- subset(erg, erg$Biegerichtung == "lo-ru")
