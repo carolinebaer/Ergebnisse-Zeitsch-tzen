@@ -105,7 +105,8 @@ ggplot(erg, aes(Haendigkeit, Biegungsanzahl)) +
         panel.grid.minor = element_line(colour = "grey90"),
         panel.grid.major = element_line(colour = "grey90"),
         panel.ontop = FALSE) +
-  geom_point(pch = 16, size = 3)
+  geom_point(pch = 16, size = 3) +
+  xlab("Händigkeit")
 
 
 # Tag - Drahtsorte
@@ -233,7 +234,7 @@ ggplot(hand_links, aes(Biegerichtung, Biegungsanzahl)) +
         panel.ontop = FALSE) +
   geom_point(pch = 16, size = 3) +
   ylim(0, 40) +
-  ggtitle("Bei Linkshändigkeit") +
+  ggtitle("Linkshändigkeit") +
 ggplot(hand_rechts, aes(Biegerichtung, Biegungsanzahl)) +
   geom_boxplot(aes(group = Biegerichtung), fill = c("lightcoral", "cadetblue2", 
                                                     "lightgreen"), 
@@ -246,7 +247,7 @@ ggplot(hand_rechts, aes(Biegerichtung, Biegungsanzahl)) +
         panel.ontop = FALSE) +
   geom_point(pch = 16, size = 3) +
   ylim(0, 40) +
-  ggtitle("Bei Rechtshändigkeit")
+  ggtitle("Rechtshändigkeit")
 
 
 # Draht - Haendigkeit
