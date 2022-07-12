@@ -27,12 +27,12 @@ plan$book
 ##### DATENSATZ #####===========================================================
 
 ## Laden des Datensatzes:
-erg <- read_excel("Versuchsplan - Exp. 8 Drahtermüdung.xlsx")
+erg <- read_excel("Versuchsplan - Exp. 8 Drahterm�dung.xlsx")
 
 erg$Tag <- as.factor(erg$Tag)
 erg$Drahtsorte  <- as.factor(erg$Drahtsorte)
 erg$Biegerichtung <- as.factor(erg$Biegerichtung)
-erg$Händigkeit <- as.factor(erg$Händigkeit)
+erg$H�ndigkeit <- as.factor(erg$H�ndigkeit)
 names(erg) <- c("Nummer", "Tag", "Block", "Drahtsorte", "Biegerichtung", 
                 "Haendigkeit", "Biegungsanzahl", "Vorkommnisse")
 
@@ -58,7 +58,7 @@ hand_rechts <- subset(erg, erg$Haendigkeit == "rechts")
 
 # insg - Drahtsorte
 # insg - Biegerichtung
-# (insg - Haendigkeit)
+# insg - Haendigkeit
 # Tag  - Drahtsorte
 # Tag - Biegerichtung
 # (Tag - Haendigkeit)
@@ -78,7 +78,7 @@ ggplot(erg, aes(Drahtsorte, Biegungsanzahl)) +
         panel.grid.minor = element_line(colour = "grey90"),
         panel.grid.major = element_line(colour = "grey90"),
         panel.ontop = FALSE) +
-  geom_point(pch = 16, size = 3) # Ueberlappung mancher Punkte
+  geom_point(pch = 16, size = 3)
 
 
 # insgesamt - Biegerichtung
@@ -118,7 +118,7 @@ ggplot(tag_eins, aes(Drahtsorte, Biegungsanzahl)) +
         panel.grid.minor = element_line(colour = "grey90"),
         panel.grid.major = element_line(colour = "grey90"),
         panel.ontop = FALSE) +
-  geom_point(pch = 16, size = 3) + # Ueberlappung mancher Punkte
+  geom_point(pch = 16, size = 3) + 
   ylim(0, 40) +
   ggtitle("Tag 1") +
 ggplot(tag_zwei, aes(Drahtsorte, Biegungsanzahl)) +
@@ -132,7 +132,7 @@ ggplot(tag_zwei, aes(Drahtsorte, Biegungsanzahl)) +
         panel.ontop = FALSE) +
   geom_point(pch = 16, size = 3) +
   ylim(0, 40) +
-  ggtitle("Tag 1")
+  ggtitle("Tag 2")
 
 
 # Tag - Biegerichtung
@@ -204,7 +204,7 @@ ggplot(draht_rot, aes(Biegerichtung, Biegungsanzahl)) +
         panel.ontop = FALSE) +
   geom_point(pch = 16, size = 3) +
   ylim(0, 40) +
-  ggtitle("Bei Eisendraht (rot)") +
+  ggtitle("roter Draht") +
   ggplot(draht_silber, aes(Biegerichtung, Biegungsanzahl)) +
   geom_boxplot(aes(group = Biegerichtung), fill = c("lightcoral", "cadetblue2", 
                                                     "lightgreen"), 
@@ -217,7 +217,7 @@ ggplot(draht_rot, aes(Biegerichtung, Biegungsanzahl)) +
         panel.ontop = FALSE) +
   geom_point(pch = 16, size = 3) +
   ylim(0, 40) +
-  ggtitle("Bei Stahldraht (silber)")
+  ggtitle("silberner Draht")
 
 
 # Haendigkeit - Biegerichtung
@@ -233,7 +233,7 @@ ggplot(hand_links, aes(Biegerichtung, Biegungsanzahl)) +
         panel.ontop = FALSE) +
   geom_point(pch = 16, size = 3) +
   ylim(0, 40) +
-  ggtitle("Bei Linksh?ndigkeit") +
+  ggtitle("Bei Linksh�ndigkeit") +
 ggplot(hand_rechts, aes(Biegerichtung, Biegungsanzahl)) +
   geom_boxplot(aes(group = Biegerichtung), fill = c("lightcoral", "cadetblue2", 
                                                     "lightgreen"), 
@@ -246,7 +246,7 @@ ggplot(hand_rechts, aes(Biegerichtung, Biegungsanzahl)) +
         panel.ontop = FALSE) +
   geom_point(pch = 16, size = 3) +
   ylim(0, 40) +
-  ggtitle("Bei Rechtshandigkeit")
+  ggtitle("Bei Rechtsh�ndigkeit")
 
 
 # Draht - Haendigkeit
@@ -261,7 +261,7 @@ ggplot(draht_rot, aes(Haendigkeit, Biegungsanzahl)) +
         panel.ontop = FALSE) +
   geom_point(pch = 16, size = 3) +
   ylim(0, 40) +
-  ggtitle("Bei Eisendraht (rot)") +
+  ggtitle("roter Draht") +
   ggplot(draht_silber, aes(Haendigkeit, Biegungsanzahl)) +
   geom_boxplot(aes(group = Haendigkeit), fill = c("lightcoral", "cadetblue2"), 
                alpha = 0.7) +
@@ -273,17 +273,16 @@ ggplot(draht_rot, aes(Haendigkeit, Biegungsanzahl)) +
         panel.ontop = FALSE) +
   geom_point(pch = 16, size = 3) +
   ylim(0, 40) +
-  ggtitle("Bei Stahldraht (silber)")
+  ggtitle("silberner Draht")
 
 
 
 ##### VORTESTS - SHAPIRO-WILK #####=============================================
 
 # ab eine Stichprobengroesse von 3 moeglich 
-# --> daher nicht allein fuer einen Tag durchfuehrbar
 
 
-### Eisendraht (rot): ___________
+### roter Draht: ___________
 ##  Linkshaenderin: -----
 
 # mo-mu
@@ -352,7 +351,7 @@ shapiro.test(rot_rechts_ro_lu$Biegungsanzahl)
 
 
 
-### Stahldraht (silber): ________
+### silberner Draht: ________
 ##  Linkshaenderin: -----
 
 # mo-mu
@@ -459,6 +458,5 @@ anova(modell)
 # Haendigkeit    1   31.69   31.69  1.0679    0.3072    
 # Residuals     43 1275.98   29.67                      
 # ---
-#   Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
+# Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
