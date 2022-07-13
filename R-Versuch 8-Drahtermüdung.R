@@ -72,7 +72,7 @@ hand_rechts <- subset(erg, erg$Haendigkeit == "rechts")
 ggplot(erg, aes(Drahtsorte, Biegungsanzahl)) +
   geom_boxplot(aes(group = Drahtsorte), fill = c("lightcoral", "cadetblue2"), 
                alpha = 0.7) +
-  theme(text = element_text(size = 25), 
+  theme(text = element_text(size = 40), 
         panel.border = element_rect(fill = NA, colour = "black"),
         panel.background = element_rect(fill = NA), 
         panel.grid.minor = element_line(colour = "grey90"),
@@ -86,7 +86,7 @@ ggplot(erg, aes(Biegerichtung, Biegungsanzahl)) +
   geom_boxplot(aes(group = Biegerichtung), fill = c("lightcoral", "cadetblue2", 
                                                     "lightgreen"), 
                alpha = 0.7) +
-  theme(text = element_text(size = 25), 
+  theme(text = element_text(size = 40), 
         panel.border = element_rect(fill = NA, colour = "black"),
         panel.background = element_rect(fill = NA), 
         panel.grid.minor = element_line(colour = "grey90"),
@@ -99,7 +99,7 @@ ggplot(erg, aes(Biegerichtung, Biegungsanzahl)) +
 ggplot(erg, aes(Haendigkeit, Biegungsanzahl)) +
   geom_boxplot(aes(group = Haendigkeit), fill = c("lightcoral", "cadetblue2"), 
                alpha = 0.7) +
-  theme(text = element_text(size = 25), 
+  theme(text = element_text(size = 40), 
         panel.border = element_rect(fill = NA, colour = "black"),
         panel.background = element_rect(fill = NA), 
         panel.grid.minor = element_line(colour = "grey90"),
@@ -113,7 +113,7 @@ ggplot(erg, aes(Haendigkeit, Biegungsanzahl)) +
 ggplot(tag_eins, aes(Drahtsorte, Biegungsanzahl)) +
   geom_boxplot(aes(group = Drahtsorte), fill = c("lightcoral", "cadetblue2"), 
                alpha = 0.7) +
-  theme(text = element_text(size = 25), 
+  theme(text = element_text(size = 40), 
         panel.border = element_rect(fill = NA, colour = "black"),
         panel.background = element_rect(fill = NA), 
         panel.grid.minor = element_line(colour = "grey90"),
@@ -125,7 +125,7 @@ ggplot(tag_eins, aes(Drahtsorte, Biegungsanzahl)) +
 ggplot(tag_zwei, aes(Drahtsorte, Biegungsanzahl)) +
   geom_boxplot(aes(group = Drahtsorte), fill = c("lightcoral", "cadetblue2"), 
                alpha = 0.7) +
-  theme(text = element_text(size = 25), 
+  theme(text = element_text(size = 40), 
         panel.border = element_rect(fill = NA, colour = "black"),
         panel.background = element_rect(fill = NA), 
         panel.grid.minor = element_line(colour = "grey90"),
@@ -141,7 +141,7 @@ ggplot(tag_eins, aes(Biegerichtung, Biegungsanzahl)) +
   geom_boxplot(aes(group = Biegerichtung), fill = c("lightcoral", "cadetblue2", 
                                                     "lightgreen"), 
                alpha = 0.7) +
-  theme(text = element_text(size = 25), 
+  theme(text = element_text(size = 40), 
         panel.border = element_rect(fill = NA, colour = "black"),
         panel.background = element_rect(fill = NA), 
         panel.grid.minor = element_line(colour = "grey90"),
@@ -154,7 +154,7 @@ ggplot(tag_zwei, aes(Biegerichtung, Biegungsanzahl)) +
   geom_boxplot(aes(group = Biegerichtung), fill = c("lightcoral", "cadetblue2", 
                                                     "lightgreen"), 
                alpha = 0.7) +
-  theme(text = element_text(size = 25), 
+  theme(text = element_text(size = 40), 
         panel.border = element_rect(fill = NA, colour = "black"),
         panel.background = element_rect(fill = NA), 
         panel.grid.minor = element_line(colour = "grey90"),
@@ -169,7 +169,7 @@ ggplot(tag_zwei, aes(Biegerichtung, Biegungsanzahl)) +
 ggplot(tag_eins, aes(Haendigkeit, Biegungsanzahl)) +
   geom_boxplot(aes(group = Haendigkeit), fill = c("lightcoral", "cadetblue2"), 
                alpha = 0.7) +
-  theme(text = element_text(size = 25), 
+  theme(text = element_text(size = 40), 
         panel.border = element_rect(fill = NA, colour = "black"),
         panel.background = element_rect(fill = NA), 
         panel.grid.minor = element_line(colour = "grey90"),
@@ -181,7 +181,7 @@ ggplot(tag_eins, aes(Haendigkeit, Biegungsanzahl)) +
 ggplot(tag_zwei, aes(Haendigkeit, Biegungsanzahl)) +
   geom_boxplot(aes(group = Haendigkeit), fill = c("lightcoral", "cadetblue2"), 
                alpha = 0.7) +
-  theme(text = element_text(size = 25), 
+  theme(text = element_text(size = 40), 
         panel.border = element_rect(fill = NA, colour = "black"),
         panel.background = element_rect(fill = NA), 
         panel.grid.minor = element_line(colour = "grey90"),
@@ -197,7 +197,7 @@ ggplot(draht_rot, aes(Biegerichtung, Biegungsanzahl)) +
   geom_boxplot(aes(group = Biegerichtung), fill = c("lightcoral", "cadetblue2", 
                                                     "lightgreen"), 
                alpha = 0.7) +
-  theme(text = element_text(size = 25), 
+  theme(text = element_text(size = 40), 
         panel.border = element_rect(fill = NA, colour = "black"),
         panel.background = element_rect(fill = NA), 
         panel.grid.minor = element_line(colour = "grey90"),
@@ -210,7 +210,7 @@ ggplot(draht_rot, aes(Biegerichtung, Biegungsanzahl)) +
   geom_boxplot(aes(group = Biegerichtung), fill = c("lightcoral", "cadetblue2", 
                                                     "lightgreen"), 
                alpha = 0.7) +
-  theme(text = element_text(size = 25), 
+  theme(text = element_text(size = 40), 
         panel.border = element_rect(fill = NA, colour = "black"),
         panel.background = element_rect(fill = NA), 
         panel.grid.minor = element_line(colour = "grey90"),
@@ -226,7 +226,7 @@ ggplot(hand_links, aes(Biegerichtung, Biegungsanzahl)) +
   geom_boxplot(aes(group = Biegerichtung), fill = c("lightcoral", "cadetblue2", 
                                                     "lightgreen"), 
                alpha = 0.7) +
-  theme(text = element_text(size = 25), 
+  theme(text = element_text(size = 40), 
         panel.border = element_rect(fill = NA, colour = "black"),
         panel.background = element_rect(fill = NA), 
         panel.grid.minor = element_line(colour = "grey90"),
@@ -239,7 +239,7 @@ ggplot(hand_rechts, aes(Biegerichtung, Biegungsanzahl)) +
   geom_boxplot(aes(group = Biegerichtung), fill = c("lightcoral", "cadetblue2", 
                                                     "lightgreen"), 
                alpha = 0.7) +
-  theme(text = element_text(size = 25), 
+  theme(text = element_text(size = 40), 
         panel.border = element_rect(fill = NA, colour = "black"),
         panel.background = element_rect(fill = NA), 
         panel.grid.minor = element_line(colour = "grey90"),
@@ -254,7 +254,7 @@ ggplot(hand_rechts, aes(Biegerichtung, Biegungsanzahl)) +
 ggplot(draht_rot, aes(Haendigkeit, Biegungsanzahl)) +
   geom_boxplot(aes(group = Haendigkeit), fill = c("lightcoral", "cadetblue2"), 
                alpha = 0.7) +
-  theme(text = element_text(size = 25), 
+  theme(text = element_text(size = 40), 
         panel.border = element_rect(fill = NA, colour = "black"),
         panel.background = element_rect(fill = NA), 
         panel.grid.minor = element_line(colour = "grey90"),
@@ -266,7 +266,7 @@ ggplot(draht_rot, aes(Haendigkeit, Biegungsanzahl)) +
   ggplot(draht_silber, aes(Haendigkeit, Biegungsanzahl)) +
   geom_boxplot(aes(group = Haendigkeit), fill = c("lightcoral", "cadetblue2"), 
                alpha = 0.7) +
-  theme(text = element_text(size = 25), 
+  theme(text = element_text(size = 40), 
         panel.border = element_rect(fill = NA, colour = "black"),
         panel.background = element_rect(fill = NA), 
         panel.grid.minor = element_line(colour = "grey90"),
