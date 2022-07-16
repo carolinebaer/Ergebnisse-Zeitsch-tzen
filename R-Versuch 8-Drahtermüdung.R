@@ -2,7 +2,6 @@
 
 ## Pakete laden:
 library(agricolae)
-library(xtable)
 library(readxl)
 library(ggplot2)
 library(patchwork)
@@ -262,6 +261,7 @@ ggplot(draht_rot, aes(Haendigkeit, Biegungsanzahl)) +
         panel.ontop = FALSE) +
   geom_point(pch = 16, size = 3) +
   ylim(0, 40) +
+  xlab("Händigkeit") +
   ggtitle("roter Draht") +
   ggplot(draht_silber, aes(Haendigkeit, Biegungsanzahl)) +
   geom_boxplot(aes(group = Haendigkeit), fill = c("lightcoral", "cadetblue2"), 
@@ -274,6 +274,7 @@ ggplot(draht_rot, aes(Haendigkeit, Biegungsanzahl)) +
         panel.ontop = FALSE) +
   geom_point(pch = 16, size = 3) +
   ylim(0, 40) +
+  xlab("Händigkeit") +
   ggtitle("silberner Draht")
 
 
